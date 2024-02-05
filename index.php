@@ -85,14 +85,13 @@
 
         function consultarDNI() {
             var dni = $("#dni").val();
-            var csrfToken = $("#csrf_token").val(); // Assuming you have a CSRF token input field
 
             $.ajax({
                 type: "POST",
-                url: "consulta-dni-ajax.php",
+                url: "/consulta-dni-ajax",
                 data: {
-                    'dni': dni,
-                    'csrf_token': csrfToken
+                    dni: dni,
+                    _token: $('meta[name="csrf-token"]').attr('content') // Obtener el token CSRF de la página
                 },
                 dataType: 'json',
                 success: function(data) {
@@ -189,13 +188,13 @@
             var csrfToken = $("#csrf_token").val(); // Assuming you have a CSRF token input field
 
             $.ajax({
-                type: "POST",
-                url: "segundo-json.php", // Replace "segundo-json.php" with the correct URL for the second JSON
-                data: {
-                    'dni': dni,
-                    'csrf_token': csrfToken
-                },
-                dataType: 'json',
+            type: "POST",
+            url: "/segundo-json",
+            data: {
+                dni: dni,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: 'json',
                 success: function(data) {
                     if (!data.error) {
                         if (data.NOMBRE.trim() == "") {
