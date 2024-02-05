@@ -1,24 +1,26 @@
 <?php
 
-$dni = isset($_POST["dni"]) ? $_POST["dni"] : '';
+$dni = $_POST["dni"];
 
-if (strlen($dni) != 8) {
+if (strlen($dni) < 8 || strlen($dni) > 8) {
     $prueba = 1;
 } else {
-    $apiEndpoint = 'https://macexpress2.pcm.gob.pe/AtencionCiudadano/AtenderCiudadano/listarciudadano';
-    $url = $apiEndpoint . '?dni=' . urlencode($dni);
+    $url = 'https://macexpress2.pcm.gob.pe/AtencionCiudadano/AtenderCiudadano/listarciudadano?dni=' . $dni;
 
-    // Using try-catch for error handling when making the API request
-    try {
-        $prueba = file_get_contents($url);
-        if ($prueba === FALSE) {
-            // Handle the case when file_get_contents fails
-            $prueba = 'Error fetching data from the API';
-        }
-    } catch (Exception $e) {
-        // Handle the exception (e.g., log the error, set an appropriate value for $prueba)
-        $prueba = 'Error during API request: ' . $e->getMessage();
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+    // You can set additional cURL options if needed
+    
+    $prueba = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        // Handle cURL error
+        $prueba = 1;
     }
+
+    curl_close($ch);
 }
 
 echo $prueba;
+?>
