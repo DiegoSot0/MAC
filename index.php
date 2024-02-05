@@ -189,7 +189,7 @@
 
             $.ajax({
             type: "POST",
-            url: "/segundo-json",
+            url: "segundo-json",
             data: {
                 dni: dni,
                 _token: $('meta[name="csrf-token"]').attr('content')
