@@ -1,44 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <title>Consulta de DNI</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
-    /* Estilos CSS personalizados para aumentar el tamaño del texto */
-    .text-large {
-        font-size: 38px;
-        /* Ajusta el tamaño del texto según tus preferencias */
-    }
+        /* Add your custom styles here */
 
-    .container-box {
-        border: 1px solid #ccc;
-        padding: 20px;
-        border-radius: 10px;
-        background-color: #f9f9f9;
-        /* Cambia el color de fondo a gris */
-        text-align: center;
-        /* Centra horizontalmente */
-    }
+        /* Adjust the color of the error message */
+        #errorMensaje {
+            color: red;
+        }
 
-    .custom-border {
-        border: 2px solid black;
-        /* Cambia el color del borde según tus preferencias */
-    }
-
-    .image-container img {
-        width: 45%;
-        /* Hace que la imagen ocupe todo el ancho de su contenedor */
-    }
-
-    i {
-        font-family: FontAwesome;
-        font-style: normal;
-        color: #FFF;
-
-    }
+        /* Style the buttons */
+        .btn-primary,
+        .btn-warning,
+        .btn-info,
+        .btn-danger {
+            font-size: 24px;
+            padding: 10px 20px;
+            margin: 5px;
+        }
     </style>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -58,10 +42,10 @@
                         oninput="validarDNI(this)" inputmode="numeric" required>
                     <div class="input-group-append">
                         <button id="clearDNI" class="btn btn-danger btn-outline-secondary" type="button"><i
-                                class="fas fa-times"></i></button>
+                                class="fa fa-times"></i></button>
                     </div>
                 </div>
-                <button id="prueba" class="btn btn-primary m-2 p-2 text-large">Consultar</button>
+                <button id="prueba" class="btn btn-primary m-2">Consultar</button>
             </div>
             <br>
             <br>
@@ -69,16 +53,12 @@
                 <label id="nombreCompleto" class="text-large" style="color: black;"></label>
             </div>
             <div>
-                <label id="errorMensaje" class="text-large" style="color: red;"></label>
+                <label id="errorMensaje" class="text-large"></label>
             </div>
             <div>
-                <button id="copiarNombre" class="btn btn-warning m-4 p-2 text-large" style="display: none;">Copiar
-                    Nombre
-                </button>
-                <button id="copiarDNI" class="btn btn-info m-4 p-2 text-large" style="display: none;">Copiar
-                    DNI</button>
+                <button id="copiarNombre" class="btn btn-warning m-4" style="display: none;">Copiar Nombre</button>
+                <button id="copiarDNI" class="btn btn-info m-4" style="display: none;">Copiar DNI</button>
             </div>
-
         </div>
     </div>
 
