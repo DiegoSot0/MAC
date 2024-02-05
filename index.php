@@ -88,7 +88,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/consulta-dni-ajax",
+                url: "MAC/consulta-dni-ajax",
                 data: {
                     dni: dni,
                     _token: $('meta[name="csrf-token"]').attr('content') // Obtener el token CSRF de la página
